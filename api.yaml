@@ -1,0 +1,76 @@
+openapi: "3.0.0"
+info:
+  title: Pendulum API
+  version: 0.0.1
+servers:
+  - url: https://dev.sample-server.com/v1
+    description: Production Server
+paths:
+  /waiting_users:
+    post:
+      tags:
+        - Matchings
+      summary: create a waiting user
+      responses:
+        '200':
+          description: a uuid that is used in matching list
+          content:
+            application/json:
+              schema: 
+                type: string
+                example:
+                  token: 550e8400-e29b-41d4-a716-446655440000
+  /waiting_users/{token}:
+    get:
+      tags:
+        - Matchings
+      summary: get a waiting user by specified uuid
+      parameters:
+        - name: token
+          in: path
+          description: uuid
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: waiting user
+          content:
+            application/json:
+              schema: 
+                type: object
+                items:
+                  $ref: '#/components/schemas/waitingUser'
+                example:
+                  token: 550e8400-e29b-41d4-a716-446655440000
+                  status: 
+                  waitedBy: 2018-12-08T03:40:50
+components: 
+  schemas: 
+    waitingUser:
+      properties: 
+        status: 
+          type: string
+          enum:
+            - waiting
+            - matched
+            - expired
+        token:
+          type: string
+          format: uuid4
+        waitedBy:
+          type: string
+          format: dateTime
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
