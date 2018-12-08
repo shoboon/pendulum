@@ -36,7 +36,8 @@ defmodule Pendulum.Mixfile do
       {:phoenix_pubsub, "~> 1.0"},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      {:plug_cowboy, "~> 1.0"}
+      {:plug_cowboy, "~> 1.0"},
+      {:uuid, "~> 1.1"},
     ]
   end
 end

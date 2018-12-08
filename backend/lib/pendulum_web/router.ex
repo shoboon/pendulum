@@ -5,7 +5,18 @@ defmodule PendulumWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", PendulumWeb do
+  scope "/", PendulumWeb do
     pipe_through :api
   end
+
+  scope "/api", PendulumWeb do
+    pipe_through :api
+
+    get "/numbered_ticket", Api.MatchingController, :index
+
+    get "/waiting_users/:numbered_ticket", Api.MatchingController, :show
+
+    get "/battle_room/:admission_ticket", Api.BattleController, :show
+  end
+
 end
