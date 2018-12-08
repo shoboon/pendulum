@@ -6,8 +6,8 @@ servers:
   - url: https://dev.sample-server.com/v1
     description: Production Server
 paths:
-  /waiting_users:
-    post:
+  /numbered_ticket:
+    get:
       tags:
         - Matchings
       summary: create a waiting user
@@ -19,14 +19,14 @@ paths:
               schema: 
                 type: string
                 example:
-                  numberedTikect: 550e8400e29b41d4a716446655440000
-  /waiting_users/{numberedTikect}:
+                  numberedTicket: 550e8400e29b41d4a716446655440000
+  /waiting_users/{numberedTicket}:
     get:
       tags:
         - Matchings
       summary: get a waiting user by specified uuid
       parameters:
-        - name: numberedTikect
+        - name: numberedTicket
           in: path
           description: uuid
           required: true
@@ -42,7 +42,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/waitingUser'
                 example:
-                  numberedTikect: 550e8400e29b41d4a716446655440000
+                  numberedTicket: 550e8400e29b41d4a716446655440000
                   admissionTicket: a205cbb134ff412dc3212333448f1200
                   status: waiting
                   waitedBy: "2018-12-08T03:40:50"
@@ -82,7 +82,7 @@ components:
             - admission
             - exited
           required: true
-        numberedTikect:
+        numberedTicket:
           type: string
           format: uuid4
           required: true
