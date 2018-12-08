@@ -19,14 +19,14 @@ paths:
               schema: 
                 type: string
                 example:
-                  token: 550e8400-e29b-41d4-a716-446655440000
-  /waiting_users/{token}:
+                  numberedTikect: 550e8400e29b41d4a716446655440000
+  /waiting_users/{numberedTikect}:
     get:
       tags:
         - Matchings
       summary: get a waiting user by specified uuid
       parameters:
-        - name: token
+        - name: numberedTikect
           in: path
           description: uuid
           required: true
@@ -42,35 +42,65 @@ paths:
                 items:
                   $ref: '#/components/schemas/waitingUser'
                 example:
-                  token: 550e8400-e29b-41d4-a716-446655440000
-                  status: 
-                  waitedBy: 2018-12-08T03:40:50
+                  numberedTikect: 550e8400e29b41d4a716446655440000
+                  admissionTicket: a205cbb134ff412dc3212333448f1200
+                  status: waiting
+                  waitedBy: "2018-12-08T03:40:50"
+  /battle_room/{admissionTicket}:
+    get:
+      tags:
+        - Battle Room
+      summary: get battle room information
+      parameters:
+        - name: admissionTicket
+          in: path
+          description: uuid
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: battle room information
+          content:
+            application/json:
+              schema: 
+                type: object
+                items:
+                  $ref: '#/components/schemas/battleRoom'
+                example:
+                  status: ready
+        
 components: 
   schemas: 
     waitingUser:
+      $ref: '#/components/schemas/waitingUser'
       properties: 
         status: 
           type: string
           enum:
             - waiting
-            - matched
-            - expired
-        token:
+            - admission
+            - exited
+          required: true
+        numberedTikect:
           type: string
           format: uuid4
+          required: true
         waitedBy:
           type: string
           format: dateTime
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+          required: true
+        admissionTicket:
+          type: string
+          format: uuid4
+          required: false
+    battleRoom:
+      $ref: '#/components/schemas/battleRoom'
+      properties: 
+        status: 
+          type: string
+          enum:
+            - ready
+            - started
+            - ended
+          required: true
