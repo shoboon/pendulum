@@ -46,7 +46,7 @@ paths:
                   admissionTicket: a205cbb134ff412dc3212333448f1200
                   status: waiting
                   waitedBy: "2018-12-08T03:40:50"
-  /battle_room/{admissionTicket}:
+  /battle_rooms/{admissionTicket}:
     get:
       tags:
         - Battle Room
