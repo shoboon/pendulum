@@ -17,6 +17,7 @@
     "@nuxtjs/axios": "^5.0.0"
   },
   "devDependencies": {
+    "axios-mock-adapter": "^1.15.0",
     "nodemon": "^1.11.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2"
