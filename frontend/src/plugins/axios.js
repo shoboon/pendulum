@@ -8,6 +8,11 @@ export default function({ $axios }) {
     })
 
     mock.onGet('/waiting_users/550e8400e29b41d4a716446655440000').reply(200, {
-        status: "admission"
+        status: "admission",
+        admissionTicket: 'a205cbb134ff412dc3212333448f1200'
+    })
+
+    mock.onGet('/battle_rooms/a205cbb134ff412dc3212333448f1200').reply(200, {
+        status: "started",
     })
 }
