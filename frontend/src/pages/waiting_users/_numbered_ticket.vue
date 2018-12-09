@@ -9,11 +9,11 @@
 
     export default {
         mounted() {
-            setInterval(this.fetchWaitingUser, 5000, { numberedTicket: this.$route.params.numbered_ticket });
+            this.pollingWaitingUser({numberedTicket: this.$route.params.numbered_ticket})
         },
         methods: {
             ...mapActions([
-            'fetchWaitingUser'
+            'pollingWaitingUser'
             ]),
         }
     }
