@@ -16,7 +16,7 @@ defmodule PendulumWeb.Router do
 
     get "/waiting_users/:numbered_ticket", Api.MatchingController, :show
 
-    get "/battle_room/:admission_ticket", Api.BattleController, :show
+    get "/battle_rooms/:admission_ticket", Api.BattleController, :show
   end
 
 end
