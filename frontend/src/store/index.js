@@ -31,9 +31,9 @@ const createStore = () => {
       },
     },
     actions: {
-        async requestNumberedTikect({ commit }) {
-            const response = await this.$axios.$get('/numbered_tikect')
-            const numberedTicket = response.numberedTikect
+        async requestNumberedTicket({ commit }) {
+            const response = await this.$axios.$get('/numbered_ticket')
+            const numberedTicket = response.numberedticket
             commit("setNumberedTicket", {numberedTicket: numberedTicket})
             this.$router.push('/waiting_users/' + numberedTicket)
         },
