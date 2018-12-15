@@ -5,7 +5,7 @@
     align-center>
 
     トップページ
-    <button @click="requestNumberedTikect()">マッチング</button>
+    <button @click="requestNumberedTicket()">マッチング</button>
 
   </v-layout>
 </template>
@@ -16,10 +16,10 @@
   export default {
     methods: {
       matching() {
-        this.requestNumberedTikect()
+        this.requestNumberedTicket()
       },
       ...mapActions([
-        'requestNumberedTikect'
+        'requestNumberedTicket'
       ]),
     }
   }
