@@ -38,6 +38,8 @@ defmodule Pendulum.Mixfile do
       {:cowboy, "~> 1.0"},
       {:plug_cowboy, "~> 1.0"},
       {:uuid, "~> 1.1"},
+      {:edeliver, "~> 1.6"},
+      {:distillery, "~> 2.0"}
     ]
   end
 end

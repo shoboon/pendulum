@@ -1,0 +1,11 @@
+version: '3.2'
+services:
+  build-server:
+    build: .
+    ports:
+    - "4000:4000"
+    command: bash -c "mix local.rebar --force && mix deps.get && mix deps.compile && MIX_ENV=prod mix release --env=prod"
+    environment:
+    - MIX_ENV=prod
+    volumes:
+    - ../backend:/app
