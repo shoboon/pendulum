@@ -25,8 +25,8 @@ defmodule PendulumWeb.Api.MatchingController do
       numberedTicket: numbered_ticket,
 
       # test用に固定化する
-      #      admissionTIcket: UUID.uuid4(),
-      admissionTIcket: @debug_admission_ticket,
+      #      admissionTicket: UUID.uuid4(),
+      admissionTicket: @debug_admission_ticket,
 
       waitedBy: "2018-12-01T09:00:00",
     }

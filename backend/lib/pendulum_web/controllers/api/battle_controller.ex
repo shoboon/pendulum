@@ -14,13 +14,13 @@ defmodule PendulumWeb.Api.BattleController do
   def show(conn, %{"admission_ticket" => @debug_admission_ticket}) do
     json conn, %{
       status: @status_started,
-      admission_ticket: @debug_admission_ticket
+      admissionTicket: @debug_admission_ticket
     }
   end
   def show(conn, %{"admission_ticket" => admission_ticket}) do
    json conn, %{
      status: @status_ended,
-     admission_ticket: admission_ticket
+     admissionTicket: admission_ticket
    }
   end
 
