@@ -120,33 +120,24 @@ components:
         position:
           type: integer
           required: true
-        step:
-          type: array
-          required: false
-          items:
-            type: integer
-          enum:
-            - 5
-            - 4
-            - 3
-            - 2
-            - 1
-            - -1
-            - -2
-            - -3
-            - -4
-            - -5
         choices:
           type: array
           required: false
           items:
             type: object
             $ref: '#/components/schemas/choice'
-        canAttack:
-          type: boolean
     choice:
       $ref: '#/components/schemas/choice'
+      description: 今後のターンで行える移動や攻撃などの選択肢
       properties:
+        action:
+          type: string
+          enum:
+            - step
+            - attack
+            - defense
+            - goOutside
+            - overOpponent
         step:
           type: integer
           required: true
