@@ -104,3 +104,52 @@ components:
             - started
             - ended
           required: true
+        turn:
+          type: string
+          required: false
+        fencers:
+          type: object
+          properties:
+            black:
+              $ref: '#/components/schemas/fencer'
+            white:
+              $ref: '#/components/schemas/fencer'
+    fencer:
+      $ref: '#/components/schemas/fencer'
+      properties: 
+        position:
+          type: integer
+          required: true
+        step:
+          type: array
+          required: false
+          items:
+            type: integer
+          enum:
+            - 5
+            - 4
+            - 3
+            - 2
+            - 1
+            - -1
+            - -2
+            - -3
+            - -4
+            - -5
+        choices:
+          type: array
+          required: false
+          items:
+            type: object
+            $ref: '#/components/schemas/choice'
+        canAttack:
+          type: boolean
+    choice:
+      $ref: '#/components/schemas/choice'
+      properties:
+        step:
+          type: integer
+          required: true
+        limit:
+          type: integer
+          required: true
