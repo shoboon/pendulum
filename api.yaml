@@ -95,6 +95,56 @@ paths:
                       - black
                       - white
                       - unknown
+  /battle_rooms/{admissionTicket}/histories:
+    put:
+      tags:
+        - Battle Room
+      summary: register fencer's action
+      parameters:
+        - name: admissionTicket
+          in: path
+          description: uuid
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: fencer's action
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  $ref: '#/components/schemas/action'
+      responses:
+        '204':
+          description: response is no content yet
+  /battle_rooms/{admissionTicket}/result:
+    get:
+      tags:
+        - Battle Room
+      summary: get a battle room's result
+      parameters:
+        - name: admissionTicket
+          in: path
+          description: uuid
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: battle room's result
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  winner:
+                    type: string
+                  loser:
+                    type: string
+      
         
 components: 
   schemas: 
@@ -133,6 +183,11 @@ components:
         turn:
           type: string
           required: false
+        lastAction:
+          type: object
+          properties:
+            action:
+              $ref: '#/components/schemas/action'
         fencers:
           type: object
           properties:
@@ -157,16 +212,22 @@ components:
       description: 今後のターンで行える移動や攻撃などの選択肢
       properties:
         action:
+          $ref: '#/components/schemas/action'
+        limit:
+          type: integer
+          required: true
+    action:
+      $ref: '#/components/schemas/action'
+      type: object
+      properties:
+        type:
           type: string
           enum:
-            - step
+            - frontStep
+            - backStep
             - attack
             - defense
             - goOutside
             - overOpponent
         step:
           type: integer
-          required: true
-        limit:
-          type: integer
-          required: true
