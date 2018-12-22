@@ -115,8 +115,8 @@ paths:
             schema:
               type: object
               properties:
-                step:
-                  type: integer
+                action:
+                  $ref: '#/components/schemas/action'
       responses:
         '204':
           description: response is no content yet
