@@ -108,7 +108,7 @@ paths:
           schema:
             type: string
       requestBody:
-        description: Optional description in *Markdown*
+        description: fencer's action
         required: true
         content:
           application/json:
