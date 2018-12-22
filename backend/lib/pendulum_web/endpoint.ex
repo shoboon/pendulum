@@ -35,6 +35,8 @@ defmodule PendulumWeb.Endpoint do
     key: "_pendulum_key",
     signing_salt: "Wl+vkWGm"
 
+  plug CORSPlug, origin: ["*"]
+
   plug PendulumWeb.Router
 
   @doc """
