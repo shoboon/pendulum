@@ -186,7 +186,8 @@ components:
         action:
           type: string
           enum:
-            - step
+            - frontStep
+            - backStep
             - attack
             - defense
             - goOutside
