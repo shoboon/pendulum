@@ -95,6 +95,33 @@ paths:
                       - black
                       - white
                       - unknown
+  /battle_rooms/{admissionTicket}/histories:
+    put:
+      tags:
+        - Battle Room
+      summary: register fencer's action
+      parameters:
+        - name: admissionTicket
+          in: path
+          description: uuid
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                step:
+                  type: integer
+      responses:
+        '204':
+          description: response is no content yet
+      
+      
         
 components: 
   schemas: 
