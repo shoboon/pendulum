@@ -160,6 +160,11 @@ components:
         turn:
           type: string
           required: false
+        lastAction:
+          type: object
+          properties:
+            action:
+              $ref: '#/components/schemas/action'
         fencers:
           type: object
           properties:
@@ -184,6 +189,15 @@ components:
       description: 今後のターンで行える移動や攻撃などの選択肢
       properties:
         action:
+          $ref: '#/components/schemas/action'
+        limit:
+          type: integer
+          required: true
+    action:
+      $ref: '#/components/schemas/action'
+      type: object
+      properties:
+        type:
           type: string
           enum:
             - frontStep
@@ -194,7 +208,3 @@ components:
             - overOpponent
         step:
           type: integer
-          required: true
-        limit:
-          type: integer
-          required: true
