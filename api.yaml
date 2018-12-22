@@ -120,7 +120,30 @@ paths:
       responses:
         '204':
           description: response is no content yet
-      
+  /battle_rooms/{admissionTicket}/result:
+    get:
+      tags:
+        - Battle Room
+      summary: get a battle room's result
+      parameters:
+        - name: admissionTicket
+          in: path
+          description: uuid
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: battle room's result
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  winner:
+                    type: string
+                  loser:
+                    type: string
       
         
 components: 
