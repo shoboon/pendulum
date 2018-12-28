@@ -15,4 +15,8 @@ export default function({ $axios }) {
     mock.onGet('/battle_rooms/a205cbb134ff412dc3212333448f1200').reply(200, {
         status: "started",
     })
+
+    mock.onGet('/battle_rooms/a205cbb134ff412dc3212333448f1200/fencers/type').reply(200, {
+        type: "black",
+    })
 }
